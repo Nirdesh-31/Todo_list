@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+<style>
+  body {
+    background: lightblue;
+  }
+
+  .center-content {
+    width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: lightskyblue;
+    border-radius: 3px;
+    box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
+  }
+
+  input {
+    width: 570px;
+    height: 38px;
+    margin: auto;
+    border-radius: 10px;
+    border: 1px solid lightskyblue;
+  }
+</style>
+
+<div class="container-fluid center-content">
+  <h2>
+    <center class="text-success pb-3">To-Do List</center>
+  </h2>
+  <form method="POST" action="/">
+    {% csrf_token %} {{form.title}}
+    <button type="submit" class="btn btn-primary btn-block m-1">
+      Create Task
+    </button>
+  </form>
+  {% for task in tasks %}
+  <div class="p-3 bg-warning m-2">
+    <a class="badge badge-success mr-1 p-1" href="{% url 'update_task' task.id %}">Update</a>
+    <a class="badge badge-danger mr-4 p-1" href="{% url 'delete' task.id %}">Delete</a>
+
+    {% if task.status == True %}
+    <strike class="text-muted">{{task}}</strike>
+    {% else %}
+    <span>{{task}}</span>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>

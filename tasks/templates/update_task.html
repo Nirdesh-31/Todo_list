@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+<style>
+  body {
+    background: lightblue;
+  }
+
+  .center-content {
+    width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: lightskyblue;
+    border-radius: 3px;
+    box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
+  }
+
+  input[type=text] {
+    width: 570px;
+    height: 38px;
+    margin: auto;
+    border-radius: 10px;
+    border: 1px solid lightskyblue;
+  }
+
+  input[type=checkbox] {
+    width: 30px;
+    height: 15px;
+
+    margin-top: 2px;
+  }
+</style>
+<div class="center-content">
+  <h3>
+    <center>Update_Task</center>
+  </h3>
+
+  <form method="POST" action="">
+    {% csrf_token %} <span style="font-size: 20px;" class="ml-2">Title: </span>{{form.title}}<br> <span
+      style="font-size: 20px;" class="ml-2">Status</span>{{form.status}}<br>
+    <button type="submit" class="btn btn-primary btn-block">Update Task</button>
+  </form>
+</div>
